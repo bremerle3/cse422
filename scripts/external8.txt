@@ -1,0 +1,23 @@
+echo "External commands set 8"
+echo " "
+
+./showsishenv		# shows sish variables related to environment
+
+Echo " "
+echo "test commands search of PATH
+ls		# tests command search PATH
+ls /bin
+ls -Flas /bin
+ls .
+ls ..
+
+echo "add current directory to PATH"
+export PATH $PATH;.		# adds "." to the PATH variable
+./showsishenv		# shows sish variables related to environment
+
+forever		# should run forever program from current directory
+
+
+
+echo " "
+echo "External commands 8 finished"

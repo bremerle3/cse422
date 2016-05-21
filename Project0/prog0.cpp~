@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+#include <vector>
+#include <ifstream>
+
+int main (int argc, char* argv[])
+{
+    //File IO constants
+    const int FIRST_ARG = 1;
+    const int SECOND_ARG = 2;
+    const int THIRD_ARG = 3;
+    const int FOURTH_ARG = 4;
+
+    //Input Args
+    std::vector<string> dict;
+    std::ifstream file_in;
+    char *text;
+    if(argc == 3)
+        {
+            dict.push_back(argv[FIRST_ARG]);
+    char str[] ="- This, a sample string.";
+    
+    //char str[] ="A,B,C,D,E";
+    char *str = "A,B,C,D,E";
+    char * pch;
+    printf ("Splitting string \"%s\" into tokens:\n",str);
+    pch = strtok (str," ,.-?!()");
+    while (pch != NULL)
+    {
+      printf ("%s\n",pch);
+      pch = strtok (NULL, " ,.-?!()");
+    }
+    return 0;
+}
+
+

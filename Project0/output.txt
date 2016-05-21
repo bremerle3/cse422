@@ -1,0 +1,12 @@
+queer,26
+Christian,24
+disturbance,3
+sailor,1
+diamonds,1
+formidable,2
+intellectual,19
+Englishman,17
+planet,2
+specimens,1
+perplexed,2
+weapon,5

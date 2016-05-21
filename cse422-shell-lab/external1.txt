@@ -1,0 +1,20 @@
+echo External commands set 1"
+echo " "
+
+/bin/ls
+/bin/ls /bin
+/bin/ls -Flas /bin
+/bin/ls .		# tests use of current directory
+/bin/ls ..		# tests use of parent directory 
+
+# make sure a copy of the file A-Trip-To-Mars.txt is in the current directory
+/bin/grep mars A-Trip-To-Mars.txt
+/bin/wc forever.cpp	# show word counts of file forever.cpp
+/bin/ps -a		# shows all processes run by your userid
+
+touch touch.file1.txt
+show $?	# shows return code of touch
+
+
+echo " "
+echo External commands set 1 finished"

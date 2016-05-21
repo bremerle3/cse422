@@ -1,0 +1,5 @@
+  PID TTY          TIME CMD
+ 6476 pts/9    00:00:00 bash
+10685 pts/9    00:00:03 emacs
+32350 pts/9    00:00:00 sish
+32360 pts/9    00:00:00 ps

@@ -1,0 +1,100 @@
+These commands must be done interactively:
+
+#-----------------------------------------------------
+#interactive group 0 -- test pause, help, clr, kill
+pause
+
+help
+
+clr
+
+# run program "forever" from the real shell and note it's pid n
+kill -9 <n>	# should terminate program "forever"
+
+
+#-----------------------------------------------------
+#interactive group 1 -- test exit and wait
+
+# run sish
+exit
+	# check that exit terminates the shell
+
+#run sish
+./forever !
+./forever !
+exit		# internal command exit
+		# check that exit sends SIGKILL to all spawned processes
+		# check that exit terminates the shell
+# from terminal
+ps -aef | grep forever
+
+
+#run sish
+./forever !
+./forever !
+exit 5		# internal command exit with code 5
+		# check that exit sends SIGKILL to all spawned processes
+		# check that exit terminates the shell
+# from terminal
+ps -aef | grep forever
+
+./forever ! 	# make note of pid n
+./forever !	# make note of pid m
+wait n		# internal command wait on pid n
+		# shell waits until "forever" with pid n is killed
+wait m		# internal command wait on pid m
+		# shell waits until "forever" with pid m is killed
+
+
+
+#-----------------------------------------------------
+#interactive group 2 -- send ctrl characters to sish
+
+# execute following from sish
+./forever2 
+#type following at prompt
+ctrl-s 	# causes shell to send SIGSTOP to forever, which stops it
+ctrl-q	# causes shell to send SIGCONT to forever, which continues it
+
+ctrl-z	# causes shell to send SIGTSTP to forever, which stops it
+ctrl-q	# causes shell to send SIGCONT to forever, which continues it
+
+ctrl-c	# causes shell to send SIGINT to forever, which kills it
+
+
+
+#-----------------------------------------------------
+#interactive group 3 -- send signals to sish
+
+# execute following from sish
+./forever2 
+
+# Using a different terminal, send signals to shell
+kill -19 sish-pid	# should stop forever2 (SIGSTOP)
+kill -18 sish-pid	# should continue forever2 (SIGCONT)
+kill -20 sish-pid	# should stop forever2 (SIGTSTP)
+kill -2 sish-pid	# should kill forever2 (SIGINT)
+
+
+#-----------------------------------------------------
+#interactive group 4 -- send signals to sish
+ps -aef + grep sish  # find the sish pid
+
+#run following from a different terminal window
+kill -6 sish-pid	# shell should keep running (SIGABRT)
+kill -14 sish-pid	# shell should keep running (SIGALRM)
+kill -1 sish-pid	# shell should keep running (SIGHUP)
+kill -10 sish-pid	# shell should keep running (SIGUSR1)
+kill -12 sish-pid	# shell should keep running (SIGUSR2)
+
+
+
+#-----------------------------------------------------
+# interactive group 5 -- test the variables $$, $?, $!
+show $$	# shows the sish's pid
+
+exitcode 5
+$?		# shows the return code of exitcode
+
+/bin/ls !
+$!		# shows the pid of /bin/ls 
